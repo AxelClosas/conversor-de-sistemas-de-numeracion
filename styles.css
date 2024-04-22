@@ -1,0 +1,17 @@
+body {
+  color-scheme: light dark;
+  display: grid;
+  place-content: center;
+  padding: 24px;
+}
+
+.original {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#resultado {
+  font-size: 60px;
+}

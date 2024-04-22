@@ -8,25 +8,8 @@
   <!-- Pico CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
 
-  <style>
-    body {
-      color-scheme: light dark;
-
-      display: grid;
-      place-content: center;
-    }
-
-    .original {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-    }
-
-    #resultado {
-      font-size: 60px;
-    }
-  </style>
+  <!-- CSS Propio -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -50,49 +33,7 @@
     <p id="resultado"></p>
   </main>
 
-  <script>
-    let $convertir = document.querySelector('.btn-convertir')
-
-    $convertir.addEventListener('click', (e) => {
-      e.preventDefault()
-      let $pResultado = document.querySelector('#resultado')
-
-      const $inputNumero = document.querySelector('.numero-original')
-      let numero = $inputNumero.value
-
-      const $inputBase = document.querySelector('.base-original')
-      let base = $inputBase.value
-
-      const $inputBaseDestino = document.querySelector('.base-destino')
-      const baseDestino = Number($inputBaseDestino.value)
-
-      if (baseDestino === 10)
-        $pResultado.innerHTML = Number(descomposicionPolinomica(numero, base))
-
-    })
-
-    function descomposicionPolinomica(numero, base) {
-      let resultado = 0
-      for (let i = 0; i < numero.length; i++) {
-        let num = Number(numero[i])
-        let exponente = numero.length - i - 1
-        resultado += num * Math.pow(base, exponente)
-      }
-      return resultado
-    }
-
-    function divisionesSucesivas(numero, base) {
-      let restos = []
-      while (true) {
-        let resultado = Math.trunc(numero / base)
-        if (resulatado < base)
-          restos.push(resultado)
-        break
-        restos.push(numero % base)
-      }
-    }
-
-  </script>
+  <script src="./main.js"></script>
 </body>
 
 </html>
