@@ -28,8 +28,8 @@ $convertir.addEventListener('click', (e) => {
 function descomposicionPolinomica(numero, base) {
   let resultado = 0
   for (let i = 0; i < numero.length; i++) {
-    let num = Number(numero[i])
-    let exponente = numero.length - i - 1
+    let num = Number(valorHexadecimal(numero[i]))
+    let exponente = valorHexadecimal(numero).length - i - 1
     resultado += num * Math.pow(base, exponente)
   }
   return resultado
@@ -42,7 +42,7 @@ function divisionesSucesivas(numero, baseDestino) {
 
   do {
     resultado = Math.trunc(numero / baseDestino)
-    restos.push(valorHexadecimal(numero % baseDestino, baseDestino))
+    restos.push(valorHexadecimal(numero % baseDestino))
     numero = resultado
   } while (numero >= baseDestino)
   restos.push(resultado)
@@ -54,7 +54,7 @@ function divisionesSucesivas(numero, baseDestino) {
   return resultadoFinal
 }
 
-function valorHexadecimal(numero, baseDestino) {
+function valorHexadecimal(numero) {
   switch (numero) {
     case 10:
       return 'A'
@@ -79,6 +79,31 @@ function valorHexadecimal(numero, baseDestino) {
     case 15:
       return 'F'
       break
+
+    case 'A':
+      return 10
+      break
+
+    case 'B':
+      return 11
+      break
+
+    case 'C':
+      return 12
+      break
+
+    case 'D':
+      return 13
+      break
+
+    case 'E':
+      return 14
+      break
+
+    case 'F':
+      return 15
+      break
+
     default:
       return numero
       break
