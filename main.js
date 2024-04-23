@@ -14,13 +14,12 @@ $convertir.addEventListener('click', (e) => {
   const $inputBaseDestino = document.querySelector('.base-destino')
   const baseDestino = Number($inputBaseDestino.value)
 
-  if (baseDestino === 10 || baseDestino === 0)
-    $pResultado.innerText = Number(descomposicionPolinomica(numero, base))
-
-  if (baseDestino > 0 && baseDestino !== 10) {
+  if (baseDestino !== 0 && baseDestino !== 1) {
     let primerValor = descomposicionPolinomica(numero, base)
     let valorFinal = divisionesSucesivas(primerValor, baseDestino)
     $pResultado.innerText = valorFinal
+  } else {
+    $pResultado.innerText = `La base destino no puede ser ${baseDestino}`
   }
 
 })
@@ -29,7 +28,7 @@ function descomposicionPolinomica(numero, base) {
   let resultado = 0
   for (let i = 0; i < numero.length; i++) {
     let num = Number(valorHexadecimal(numero[i]))
-    let exponente = valorHexadecimal(numero).length - i - 1
+    let exponente = numero.length - i - 1
     resultado += num * Math.pow(base, exponente)
   }
   return resultado
@@ -45,6 +44,7 @@ function divisionesSucesivas(numero, baseDestino) {
     restos.push(valorHexadecimal(numero % baseDestino))
     numero = resultado
   } while (numero >= baseDestino)
+
   restos.push(resultado)
 
   restos.reverse()
@@ -55,6 +55,7 @@ function divisionesSucesivas(numero, baseDestino) {
 }
 
 function valorHexadecimal(numero) {
+  numero = typeof numero === 'string' ? numero.toLocaleUpperCase() : numero
   switch (numero) {
     case 10:
       return 'A'
