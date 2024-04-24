@@ -6,10 +6,10 @@ $convertir.addEventListener('click', (e) => {
   $pResultado.innerHTML = ''
 
   const $inputNumero = document.querySelector('.numero-original')
-  let numero = $inputNumero.value
+  let numero = $inputNumero.value.trim()
 
   const $inputBase = document.querySelector('.base-original')
-  let base = $inputBase.value
+  let base = $inputBase.value.trim()
 
   const $inputBaseDestino = document.querySelector('.base-destino')
   const baseDestino = Number($inputBaseDestino.value)
@@ -17,7 +17,8 @@ $convertir.addEventListener('click', (e) => {
   if (baseDestino !== 0 && baseDestino !== 1) {
     let primerValor = descomposicionPolinomica(numero, base)
     let valorFinal = divisionesSucesivas(primerValor, baseDestino)
-    $pResultado.innerText = `El número ${numero} con base ${base} es igual a ${valorFinal} en base ${baseDestino}`
+
+    $pResultado.innerHTML = formatearResultado(numero, base, valorFinal, baseDestino)
   } else {
     $pResultado.innerText = `La base destino no puede ser ${baseDestino}`
   }
@@ -38,14 +39,16 @@ function divisionesSucesivas(numero, baseDestino) {
   let restos = []
   let resultado = 0
   let resultadoFinal = ''
+  let resto = 0
 
   do {
     resultado = Math.trunc(numero / baseDestino)
-    restos.push(valorHexadecimal(numero % baseDestino))
+    resto = valorHexadecimal(numero % baseDestino)
+    restos.push(resto)
     numero = resultado
   } while (numero >= baseDestino)
 
-  restos.push(resultado)
+  restos.push(valorHexadecimal(resultado))
 
   restos.reverse()
 
@@ -109,4 +112,8 @@ function valorHexadecimal(numero) {
       return numero
       break
   }
+}
+
+function formatearResultado(numeroOriginal, baseOriginal, numeroFinal, baseFinal) {
+  return `El número <strong>${numeroOriginal}</strong> con base <strong>${baseOriginal}</strong> es igual a <strong>${numeroFinal}</strong> en base <strong>${baseFinal}</strong>`
 }
