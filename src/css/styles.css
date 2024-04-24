@@ -1,0 +1,33 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  color-scheme: light dark;
+  display: grid;
+  place-content: center;
+  padding: 24px;
+}
+
+.original {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#resultado {
+  font-size: 36px;
+  border: 2px solid #9999993f;
+  text-wrap: wrap;
+  padding: 8px;
+  border-radius: 4px;
+  min-height: 72px;
+  height: max-content;
+}
