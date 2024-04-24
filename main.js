@@ -17,7 +17,7 @@ $convertir.addEventListener('click', (e) => {
   if (baseDestino !== 0 && baseDestino !== 1) {
     let primerValor = descomposicionPolinomica(numero, base)
     let valorFinal = divisionesSucesivas(primerValor, baseDestino)
-    $pResultado.innerText = valorFinal
+    $pResultado.innerText = `El número ${numero} con base ${base} es igual a ${valorFinal} en base ${baseDestino}`
   } else {
     $pResultado.innerText = `La base destino no puede ser ${baseDestino}`
   }
