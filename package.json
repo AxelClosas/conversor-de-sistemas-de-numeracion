@@ -1,0 +1,24 @@
+{
+  "name": "conversor-de-sistemas-de-numeracion",
+  "version": "1.0.0",
+  "description": "Conversor de numeros a otros sistemas de numeración. Es una app con fines educativos.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxelClosas/conversor-de-sistemas-de-numeracion.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "author": "Axel Closas <axelclosas13@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AxelClosas/conversor-de-sistemas-de-numeracion/issues"
+  },
+  "homepage": "https://github.com/AxelClosas/conversor-de-sistemas-de-numeracion#readme"
+}
